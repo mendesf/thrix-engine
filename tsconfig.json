@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"target": "ES2020",
+		"useDefineForClassFields": true,
+		"module": "ESNext",
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"skipLibCheck": true,
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"noEmit": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedSideEffectImports": true,
+		"experimentalDecorators": true,
+		"baseUrl": ".",
+		"paths": {
+			"thrix": ["engine/index.ts"],
+			"thrix/*": ["engine/*"],
+			"externals/*": ["externals/*"],
+			"plugins/*": ["plugins/*"]
+		},
+
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"typeRoots": ["node_modules/@types"]
+	},
+	"include": ["engine", "examples", "externals", "plugins"]
+}
