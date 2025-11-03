@@ -1,3 +1,7 @@
+export type Resource = {
+    init?: () => Promise<void> | void;
+};
+
 export type ResourceType<T extends object> = new () => T;
 
 export class ResourceManger {
