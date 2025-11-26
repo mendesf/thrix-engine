@@ -30,14 +30,15 @@ export async function spawnBunnies({ world, entities }: UpdateSystemArgs): Promi
 
     const max = Math.min(bunnyCount.value, world.maxEntities() - world.entityCount());
     for (let i = 0; i < max; i++) {
-        const speedX = (await rng.randomFloat(`spawnBunnies_x_${i}`)).unwrap();
-        const speedY = (await rng.randomFloat(`spawnBunnies_y_${i}`)).unwrap();
+        const timestamp = Date.now();
+        const speedX = (await rng.randomFloat(`spawnBunnies_x_${i}_${timestamp}`)).unwrap();
+        const speedY = (await rng.randomFloat(`spawnBunnies_y_${i}_${timestamp}`)).unwrap();
+        const angle = (await rng.randomFloat(`spawnBunnies_angle_${i}_${timestamp}`)).unwrap();
         const bunny = world.spawnEntity();
         bunny.addComponent(Bunny);
         bunny.addComponent(new Sprite().withAsset(bunnyAsset));
         bunny.addComponent(new Transform().withPosition(display.width / 2, display.height / 2));
-        bunny.addComponent(new Velocity(randomSpeed(300, speedX), randomSpeed(300, speedY)));
-        const angle = (await rng.randomFloat(`spawnBunnies_angle_${i}`)).unwrap();
+        bunny.addComponent(new Velocity(randomSpeed(100, speedX), randomSpeed(100, speedY)));
         bunny.addComponent(new AngularVelocity(randomSpeed(5, angle) * Math.PI));
     }
 
